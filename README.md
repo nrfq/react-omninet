@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+# Omninet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created as a way to host my world-building notes in one consolidated place. I found myself
+copy and pasting from the markdown-based Obsidian into Google Docs so I could share the notes with the players at the
+campaign table. A local project parses and indexes my markdown files, and this project is a user interface to read and search
+through them.
 
-## Available Scripts
+## Development
 
-In the project directory, you can run:
+If you plan on borrowing or extending this project, you'll need to set up your own markdown files. The location of these
+files will differ based on which `npm`command you're running.\
+The project expects there to be no subdirectories in the markdown folder, since presumably the
+ file structure should only be for use in your personal note-taking environment.
+
+This project was bootstrapped with `create-react-app`, so you can find more information about what these scripts are doing
+in the [Create React App docs](https://create-react-app.dev/docs/getting-started#scripts).
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Runs the app in the development mode, can be viewed at [http://localhost:3000](http://localhost:3000) in a browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Markdown files must be placed in `public/markdown`.
 
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Markdown files must be placed in a `markdown/` folder.
