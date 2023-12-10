@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Article from "./components/Article";
+import CautionTape from "./components/CautionTape";
+import Grid from "./assets/background-grid.png";
 
 const page = "subfile";
 
@@ -8,29 +10,26 @@ function App() {
 
   const [markdown, setMarkdown] = useState("");
 
-  useEffect(() => {
-    console.log("this runs at all")
-    fetch(`${page}.md`, { headers: { 'Content-Type': 'text/markdown', 'Accept': 'text/markdown' } })
-      .then((res) => res.text())
-      .then((text) => { console.log("text", text); setMarkdown(text) });
-  }, [page]);
+  // useEffect(() => {
+  //   fetch(`${page}.md`, { headers: { 'Content-Type': 'text/markdown', 'Accept': 'text/markdown' } })
+  //     .then((res) => res.text())
+  //     .then((text) => { console.log("text", text); setMarkdown(text) });
+  // }, [page]);
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        width: "100%",
+        height: "100vh",
+        background: `url(${Grid}`,
+        "animation": "scroll 600s linear infinite",
+        top: 0,
+        left: 0,
+      }}
+    >
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{markdown}</p>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <CautionTape text={"Under Construction"}/>
       </header>
     </div>
   );
