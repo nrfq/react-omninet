@@ -4,7 +4,9 @@ import Markdown from "react-markdown";
 function Article({ text }: { text:string }) {
 
   return (
-    <Markdown children={text}/>
+    <div style={{ backgroundColor: "white", border: "1px dashed #991e2a", color: "black" }}>
+      <Markdown children={text}/>
+    </div>
   )
 }
 

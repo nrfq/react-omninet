@@ -11,6 +11,9 @@
 # production
 /build
 
+# resources
+/public/markdown
+
 # misc
 .DS_Store
 .env.local

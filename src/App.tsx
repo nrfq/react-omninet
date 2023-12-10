@@ -6,15 +6,19 @@ import Grid from "./assets/background-grid.png";
 
 const page = "subfile";
 
+const WIP_MODE = false;
+
 function App() {
 
   const [markdown, setMarkdown] = useState("");
 
-  // useEffect(() => {
-  //   fetch(`${page}.md`, { headers: { 'Content-Type': 'text/markdown', 'Accept': 'text/markdown' } })
-  //     .then((res) => res.text())
-  //     .then((text) => { console.log("text", text); setMarkdown(text) });
-  // }, [page]);
+  useEffect(() => {
+    if (!WIP_MODE) {
+      fetch(`markdown/${page}.md`, {headers: {'Content-Type': 'text/markdown', 'Accept': 'text/markdown'}})
+        .then((res) => res.text())
+        .then((text) => setMarkdown(text));
+    }
+  }, [page]);
 
   return (
     <div
@@ -29,7 +33,10 @@ function App() {
       }}
     >
       <header className="App-header">
-        <CautionTape text={"Under Construction"}/>
+        {WIP_MODE
+          ? <CautionTape text={"Under Construction"}/>
+          : <Article text={markdown}/>
+        }
       </header>
     </div>
   );
