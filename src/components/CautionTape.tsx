@@ -5,8 +5,8 @@ function CautionTape({ text }:{ text:string }) {
     <div
       style={{
         backgroundColor: "#991e2a",
-        "clipPath": "polygon(100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%,0 0)",
-        WebkitClipPath: "polygon(100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%,0 0)",
+        clipPath: "var(--clip-bottom-right)",
+        WebkitClipPath: "var(--clip-bottom-right)",
         fontSize: 60,
         padding: 30,
         fontWeight: 600,
