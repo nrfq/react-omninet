@@ -47,7 +47,11 @@ function FileSearch() {
   const handleKeyPress = (event: KeyboardEvent) => {
     if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
       event.preventDefault();
-      searchInputRef.current?.focus();
+      if (focused) {
+        searchInputRef.current?.blur();
+      } else {
+        searchInputRef.current?.focus();
+      }
     }
   };
 
