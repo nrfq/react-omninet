@@ -1,9 +1,9 @@
 import React, {useState, useEffect, useRef} from "react";
 import Fuse from "fuse.js";
-import Keybind from "./icons/Keybind";
+import HotKey from "./icons/HotKey";
 import TableOfContents from "../toc.json";
 import { classNames } from "../utils/cssUtils";
-import KeyboardKey from "./icons/KeyboardKey";
+import { keybinds } from "../utils/keybindUtils";
 
 interface TOCEntry {
   name: string;
@@ -45,7 +45,7 @@ function FileSearch() {
   };
 
   const handleKeyPress = (event: KeyboardEvent) => {
-    if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+    if (keybinds.search.validate(event)) {
       event.preventDefault();
       if (focused) {
         searchInputRef.current?.blur();
@@ -95,10 +95,15 @@ function FileSearch() {
           onBlur={onBlur}
         />
         <div className={keybindClassnames}>
-          <Keybind keys={["CMD", "K"]}/>
+          <HotKey keys={keybinds.search.keys}/>
         </div>
       </div>
-      {searchResults?.map((result) => <div>{result.name}</div>)}
+      <div style={{ fontFamily: "monospace", color: "whitesmoke" }} >
+        {focused && inputValue && searchResults?.length == 0
+          ? "query protocol returned no data"
+          : searchResults?.map((result) => <div>{result.name}</div>)
+        }
+      </div>
     </div>
   );
 }

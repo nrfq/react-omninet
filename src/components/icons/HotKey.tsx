@@ -1,7 +1,7 @@
 import React from "react";
 import KeyboardKey from "./KeyboardKey";
 
-function Keybind({ keys }: { keys:string[] }) {
+function HotKey({ keys }: { keys:string[] }) {
   return (
     <div style={{ gap: 4, display: "flex", alignItems: "center", height: "fit-content" }}>
       {keys.map(( key ) => <KeyboardKey key={key} keyInput={key}/>)}
@@ -9,4 +9,4 @@ function Keybind({ keys }: { keys:string[] }) {
   );
 }
 
-export default Keybind;
+export default HotKey;
