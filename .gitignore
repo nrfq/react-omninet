@@ -13,6 +13,7 @@
 
 # resources
 /public/markdown
+toc.json
 
 # misc
 .DS_Store
