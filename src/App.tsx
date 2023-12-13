@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Article from "./components/Article";
 import CautionTape from "./components/CautionTape";
+import FileSearch from "./components/FileSearch";
 import Grid from "./assets/background-grid.png";
 
 const page = "Court 6";
@@ -37,12 +38,15 @@ function App() {
         left: 0,
       }}
     >
-      <header>
+      <header className={"top-nav"} >
+        <FileSearch />
+      </header>
+      <main>
         {WIP_MODE
           ? <CautionTape text={"Under Construction"}/>
           : <Article text={markdown}/>
         }
-      </header>
+      </main>
     </div>
   );
 }

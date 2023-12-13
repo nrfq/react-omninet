@@ -13,6 +13,7 @@
 
 # resources
 /public/markdown
+toc.json
 
 # misc
 .DS_Store
@@ -20,6 +21,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.idea
 
 npm-debug.log*
 yarn-debug.log*
