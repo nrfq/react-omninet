@@ -82,23 +82,30 @@ function FileSearch() {
     focused ? "search-keybind-wrapper-focus" : null,
   )
 
+  const searchResultClassnames = classNames(
+    "search-results",
+    focused ? "search-results-focus" : null,
+  )
+
   return (
-    <div className={containerClassnames} >
-      <div className={"search-input-wrapper"}>
-        <input
-          className={"search-input"}
-          type="text"
-          ref={searchInputRef}
-          placeholder="initiate query protocol..."
-          onChange={onSearch}
-          onFocus={onFocus}
-          onBlur={onBlur}
-        />
-        <div className={keybindClassnames}>
-          <HotKey keys={keybinds.search.keys}/>
+    <div style={{ width: 400 }}>
+      <div className={containerClassnames} >
+        <div className={"search-input-wrapper"}>
+          <input
+            className={"search-input"}
+            type="text"
+            ref={searchInputRef}
+            placeholder="initiate query protocol..."
+            onChange={onSearch}
+            onFocus={onFocus}
+            onBlur={onBlur}
+          />
+          <div className={keybindClassnames}>
+            <HotKey keys={keybinds.search.keys}/>
+          </div>
         </div>
       </div>
-      <div style={{ fontFamily: "monospace", color: "whitesmoke" }} >
+      <div className={searchResultClassnames} >
         {focused && inputValue && searchResults?.length == 0
           ? "query protocol returned no data"
           : searchResults?.map((result) => <div>{result.name}</div>)

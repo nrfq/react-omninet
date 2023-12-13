@@ -88,11 +88,11 @@ a:visited {
 .search-container {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  padding: 10px;
   clip-path: var(--clip-top-right-bottom-left);
   -webkit-clip-path: var(--clip-top-right-bottom-left);
   background-color: var(--primary);
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, height 0.2s ease;
 }
 
 .search-container-focused {
@@ -101,10 +101,11 @@ a:visited {
 
 .search-input-wrapper {
   background-color: var(--white);
+  position: relative;
   height: 40px;
+  min-height: 40px;
   display: flex;
-  flex-grow: 1;
-  margin: 10px;
+  margin: 0;
   border: none;
   clip-path: var(--clip-top-right-bottom-left);
   -webkit-clip-path: var(--clip-top-right-bottom-left);
@@ -133,6 +134,23 @@ a:visited {
 .search-keybind-wrapper-focus {
   visibility: collapse;
   opacity: 0;
+}
+
+.search-results {
+  /* TODO: don't use statically set top value */
+  top: 50px;
+  padding-top: 10px;
+  width: inherit;
+  background-color: var(--primary);
+  position: absolute;
+  font-family: monospace;
+  color: var(--white);
+  transition: background-color 0.3s;
+}
+
+.search-results-focus {
+  /* TODO: don't use statically set top value */
+  background-color: var(--primary-accent);
 }
 
 .keyboard-key {
