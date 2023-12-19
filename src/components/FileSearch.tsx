@@ -4,12 +4,10 @@ import HotKey from "./icons/HotKey";
 import TableOfContents from "../toc.json";
 import { classNames } from "../utils/cssUtils";
 import { keybinds } from "../utils/keybindUtils";
+import ArticleLink from "./markdown/ArticleLink";
+import { ArticleEntry } from "../utils/naviagationUtils";
 
-interface TOCEntry {
-  name: string;
-}
-
-const TOCList:TOCEntry[] = Object.values(TableOfContents);
+const TOCList:ArticleEntry[] = Object.values(TableOfContents);
 const fuseOptions = {
   // isCaseSensitive: false,
   // includeScore: false,
@@ -35,7 +33,7 @@ const fuse = new Fuse(TOCList , fuseOptions)
 function FileSearch() {
 
   const [inputValue, setInputValue] = useState("");
-  const [searchResults, setSearchResults] = useState<TOCEntry[]>();
+  const [searchResults, setSearchResults] = useState<ArticleEntry[]>();
   const [focused, setFocused] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -108,7 +106,10 @@ function FileSearch() {
       <div className={searchResultClassnames} >
         {focused && inputValue && searchResults?.length == 0
           ? "query protocol returned no data"
-          : searchResults?.map((result) => <div>{result.name}</div>)
+          : searchResults?.map((result) => (
+              <ArticleLink href={result.name} children={result.name} className={"nav-link"} />
+            )
+          )
         }
       </div>
     </div>

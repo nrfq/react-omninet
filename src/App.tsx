@@ -1,52 +1,46 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
-import Article from "./components/Article";
-import CautionTape from "./components/CautionTape";
-import FileSearch from "./components/FileSearch";
+import Main from "./components/Main";
+import Home from "./components/Home";
 import Grid from "./assets/background-grid.png";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./components/ErrorPage";
+import TopNav from "./components/TopNav";
 
-const page = "Court 6";
 
-const WIP_MODE = false;
+const routes = [
+  {
+    path: "/",
+    element: <TopNav/>,
+    errorElement: <TopNav/>,
+    children: [
+      {
+        path: "/",
+        element: <Home/>,
+        errorElement: <ErrorPage/>,
+      },
+      {
+        path: "article/:article",
+        element: <Main/>,
+        errorElement: <ErrorPage/>,
+      },
+    ]
+  },
+]
+
+const routerOptions = {
+  basename: "/omninet",
+}
+
+const router = createBrowserRouter(routes, routerOptions);
 
 function App() {
-
-  const [markdown, setMarkdown] = useState<string|undefined>();
-
-  useEffect(() => {
-    if (!WIP_MODE) {
-      fetch(`markdown/${page}.md`, {headers: {'Content-Type': 'text/markdown', 'Accept': 'text/markdown'}})
-        .then((res) => {
-          if (res.ok || res.redirected) {
-            return res.text();
-          }
-          return;
-        })
-        .then((text) => setMarkdown(text));
-    }
-  }, [page]);
-
   return (
     <div
       className="App"
-      style={{
-        width: "100%",
-        height: "100%",
-        background: `url(${Grid}`,
-        "animation": "scroll 600s linear infinite",
-        top: 0,
-        left: 0,
-      }}
+      style={{ background: `url(${Grid}`, animation: "scroll 600s linear infinite" }}
     >
-      <header className={"top-nav"} >
-        <FileSearch />
-      </header>
-      <main>
-        {WIP_MODE
-          ? <CautionTape text={"Under Construction"}/>
-          : <Article text={markdown}/>
-        }
-      </main>
+      <RouterProvider router={router} />
     </div>
   );
 }
