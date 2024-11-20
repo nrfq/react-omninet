@@ -29,7 +29,7 @@ const routes = [
 ]
 
 const routerOptions = {
-  basename: "/omninet",
+  basename: "/react-omninet",
 }
 
 const router = createBrowserRouter(routes, routerOptions);
